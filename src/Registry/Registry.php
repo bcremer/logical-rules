@@ -23,6 +23,7 @@ class Registry
         $this->add('or', new Container\OrRule());
         $this->add('xor', new Container\XorRule());
         $this->add('not', new Container\NotRule());
+        $this->add('nand', new Container\NandRule());
 
         $this->add('false', new Rule\FalseRule());
         $this->add('true', new Rule\TrueRule());

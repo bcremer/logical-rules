@@ -135,6 +135,35 @@ class RuleTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($rule->validate());
     }
 
+    /**
+     * Test logical NAND rule container
+     */
+    public function testNandRule()
+    {
+        $rule = $this->getRuleBuilder()->fromArray(array(
+            'false',
+            'false',
+        ), 'nand');
+        $this->assertTrue($rule->validate());
+
+        $rule = $this->getRuleBuilder()->fromArray(array(
+            'false',
+            'true',
+        ), 'nand');
+        $this->assertTrue($rule->validate());
+
+        $rule = $this->getRuleBuilder()->fromArray(array(
+            'true',
+            'false',
+        ), 'nand');
+        $this->assertTrue($rule->validate());
+
+        $rule = $this->getRuleBuilder()->fromArray(array(
+            'true',
+            'true',
+        ), 'nand');
+        $this->assertFalse($rule->validate());
+    }
 
     public function testCompareRule()
     {
